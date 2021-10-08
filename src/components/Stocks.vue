@@ -23,12 +23,7 @@
       </div>
     </div>
     <ol class="stocks__list">
-      <StockItem />
-      <StockItem />
-      <StockItem />
-      <StockItem />
-      <StockItem />
-      <StockItem />
+      <StockItem v-for="stock in JSON.parse(stocks.data)" :key="stock.zipcode"  v-bind:stockData="stock" />
     </ol>
   </section>
 </template>
@@ -39,6 +34,11 @@ import StockItem from "./StockItem.vue";
 export default {
   components: {
     StockItem,
+  },
+  computed: {
+    stocks() {
+      return (this.$store.getters.stocks);
+    },
   },
 };
 </script>
@@ -56,6 +56,7 @@ export default {
     position: relative;
     border-radius: 12px;
     background-color: rgba(#fff, 0.1);
+    transition: 200ms;
 
     &:nth-child(2n) {
       background-color: transparent;
@@ -71,11 +72,18 @@ export default {
 
       transform: translate(0, -50%);
     }
+
+    &:hover {
+      background-color: rgba(#fff, 0.2);
+      transform: scale(1.01);
+      cursor: pointer;
+    }
   }
 
   &__markup {
     display: grid;
     grid-template-columns: 1.5fr 4fr 1fr 2fr 1fr 1fr 2fr 1fr;
+    align-items: center;
 
     &_heading {
       margin-bottom: 30px;
@@ -103,13 +111,13 @@ export default {
     }
 
     &_negative {
-        color: #FE2B5C;
+      color: #fe2b5c;
 
-        &::after {
-            content: "▼";
+      &::after {
+        content: "▼";
         font-size: 10px;
         margin-left: 8px;
-        }
+      }
     }
   }
 

@@ -1,0 +1,204 @@
+[
+  {
+    "zipcode": "20904",
+    "region": "Silver Spring, Montgomery County, MD",
+    "sales": 19,
+    "lastYear": 23,
+    "total": 89,
+    "lastYearTotal": 110,
+    "competitors": [
+      {
+        "name": "Brown's Chantilly Mazda",
+        "sales": 17,
+      },
+      {
+        "name": "Brown's Alexandria Mazda",
+        "sales": 12
+      },
+      {
+        "name": "Brown's Fairfax Mazda",
+        "sales": 12
+      },
+      {
+        "name": "Apple Ford of Red Lion",
+        "sales": 7
+      },
+      {
+        "name": "Sheehy Ford Of Gaithersburg",
+        "sales": 16
+      }
+    ]
+  },
+  {
+    "zipcode": "20707",
+    "region": "Laurel, Prince George's County, MD",
+    "sales": 15,
+    "lastYear": 17,
+    "total": 167,
+    "lastYearTotal": 120,
+    "competitors": [
+      {
+        "name": "Brown's Chantilly Mazda",
+        "sales": 19
+      },
+      {
+        "name": "Brown's Alexandria Mazda",
+        "sales": 22
+      },
+      {
+        "name": "Brown's Fairfax Mazda",
+        "sales": 20
+      },
+      {
+        "name": "Apple Ford of Red Lion",
+        "sales": 17
+      },
+      {
+        "name": "Sheehy Ford Of Gaithersburg",
+        "sales": 13
+      }
+    ]
+  },
+  {
+    "zipcode": "20705",
+    "region": "Beltsville, Prince George's County, MD",
+    "sales": 40,
+    "lastYear": 28,
+    "total": 89,
+    "lastYearTotal": 90,
+    "competitors": [
+      {
+        "name": "Brown's Chantilly Mazda",
+        "sales": 12
+      },
+      {
+        "name": "Brown's Alexandria Mazda",
+        "sales": 12
+      },
+      {
+        "name": "Brown's Fairfax Mazda",
+        "sales": 12
+      },
+      {
+        "name": "Apple Ford of Red Lion",
+        "sales": 37
+      },
+      {
+        "name": "Sheehy Ford Of Gaithersburg",
+        "sales": 8
+      }
+    ]
+  },
+  {
+    "zipcode": "20866",
+    "region": "Burtonsville, Montgomery County, MD",
+    "sales": 14,
+    "lastYear": 14,
+    "total": 35,
+    "lastYearTotal": 36,
+    "competitors": [
+      {
+        "name": "Brown's Chantilly Mazda",
+        "sales": 17
+      },
+      {
+        "name": "Brown's Alexandria Mazda",
+        "sales": 2
+      },
+      {
+        "name": "Sheehy Ford Of Gaithersburg",
+        "sales": 2
+      }
+    ]
+  },
+  {
+    "zipcode": "20905",
+    "region": "Silver Spring, Montgomery County, MD",
+    "sales": 5,
+    "lastYear": 17,
+    "total": 28,
+    "lastYearTotal": 74,
+    "competitors": [
+      {
+        "name": "Brown's Chantilly Mazda",
+        "sales": 1
+      },
+      {
+        "name": "Brown's Alexandria Mazda",
+        "sales": 1
+      },
+      {
+        "name": "Brown's Fairfax Mazda",
+        "sales": 1
+      },
+      {
+        "name": "Apple Ford of Red Lion",
+        "sales": 17
+      },
+      {
+        "name": "Sheehy Ford Of Gaithersburg",
+        "sales": 2
+      }
+    ]
+  },
+  {
+    "zipcode": "20903",
+    "region": "Silver Spring, Montgomery County, MD",
+    "sales": 10,
+    "lastYear": 15,
+    "total": 61,
+    "lastYearTotal": 47,
+    "competitors": [
+      {
+        "name": "Brown's Chantilly Mazda",
+        "sales": 10
+      },
+      {
+        "name": "Brown's Alexandria Mazda",
+        "sales": 12
+      },
+      {
+        "name": "Brown's Fairfax Mazda",
+        "sales": 11
+      },
+      {
+        "name": "Apple Ford of Red Lion",
+        "sales": 7
+      },
+      {
+        "name": "Sheehy Ford Of Gaithersburg",
+        "sales": 3
+      }
+    ]
+  },
+  {
+    "zipcode": "20902",
+    "region": "Silver Spring, Montgomery County, MD",
+    "sales": 57,
+    "lastYear": 25,
+    "total": 125,
+    "lastYearTotal": 110,
+    "competitors": [
+      {
+        "name": "Brown's Chantilly Mazda",
+        "sales": 7
+      },
+      {
+        "name": "Brown's Alexandria Mazda",
+        "sales": 12
+      },
+      {
+        "name": "Brown's Fairfax Mazda",
+        "sales": 13
+      },
+      {
+        "name": "Apple Ford of Red Lion",
+        "sales": 7
+      },
+      {
+        "name": "Sheehy Ford Of Gaithersburg",
+        "sales": 18
+      }
+    ]
+  }
+]
