@@ -1,16 +1,21 @@
 <template>
   <div id="app">
     <Header />
+    <main class="main">
+      <Stocks />
+    </main>
   </div>
 </template>
 
 <script>
 import Header from './components/Header.vue'
+import Stocks from './components/Stocks.vue'
 
 export default {
   name: 'App',
   components: {
-    Header
+    Header,
+    Stocks
   }
 }
 </script>
@@ -69,6 +74,10 @@ table {
 body {
   background-color: #2E2F32;
   color: #fff;
-  font-family: Helvetica, sans-serif;
+  font-family: Helvetica, sans-serif; 
+}
+
+.main {
+  margin-top: 100px;
 }
 </style>
