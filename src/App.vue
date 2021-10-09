@@ -2,7 +2,7 @@
   <div id="app">
     <Header />
     <main class="main">
-      <Stocks />
+      <Stocks :stocksList="stocksJSON" />
     </main>
   </div>
 </template>
@@ -19,18 +19,22 @@ const ax = axios.create({
 
 export default {
   name: "App",
+  data: () => ({
+    stocksJSON: ''
+  }),
   components: {
     Header,
     Stocks,
   },
   store: store,
   mounted() {
-    ax.get("static/json.json", {
+    ax.get("static/json-an.txt", {
       headers: {
         "Content-Type": "application/json",
       }
     })
       .then((response) => {
+        this.stocksJSON = response
         this.$store.commit("setStocks", response);
       })
       .catch((err) => {

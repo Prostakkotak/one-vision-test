@@ -23,7 +23,9 @@
       </div>
     </div>
     <ol class="stocks__list">
-      <StockItem v-for="stock in JSON.parse(stocks.data)" :key="stock.zipcode"  v-bind:stockData="stock" />
+      <!-- <StockItem v-for="stock in JSON.parse(stocks.data)" :key="stock.zipcode"  v-bind:stockData="stock" /> -->
+      <StockItem />
+     
     </ol>
   </section>
 </template>
@@ -32,6 +34,10 @@
 import StockItem from "./StockItem.vue";
 
 export default {
+  props: ['stocksList'],
+  data: () => ({
+    stockData: ''
+  }),
   components: {
     StockItem,
   },
@@ -40,6 +46,9 @@ export default {
       return (this.$store.getters.stocks);
     },
   },
+  mounted() {
+    console.log(this.$store.state.testData)
+  }
 };
 </script>
 
