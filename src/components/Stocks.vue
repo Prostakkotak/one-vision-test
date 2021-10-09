@@ -23,7 +23,6 @@
       </div>
     </div>
     <ol class="stocks__list">
-      <!-- <StockItem v-for="stock in JSON.parse(stocks.data)" :key="stock.zipcode"  v-bind:stockData="stock" /> -->
       <StockItem v-for="stock in stocks.data" :key="stock.zipcode" :stockData="stock" />
     </ol>
   </section>

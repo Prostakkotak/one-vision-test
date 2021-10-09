@@ -2,11 +2,11 @@
   <div id="app">
     <Header />
     <main class="main">
-      <!-- <Modal
-       v-show="true"
-      @close="closeModal"
-      /> -->
       <Stocks :stocksList="stocksJSON" />
+      <Modal
+       v-show="$store.getters.modalOpenState"
+       :competitors="competitors"
+      />
     </main>
   </div>
 </template>
@@ -14,9 +14,10 @@
 <script>
 import Header from "./components/Header.vue";
 import Stocks from "./components/Stocks.vue";
-/* import Modal from './components/Modal.vue'; */
+import Modal from './components/Modal.vue';
 import store from "./store";
 import axios from "axios";
+import { mapGetters } from 'vuex';
 
 const ax = axios.create({
   baseURL: "http://localhost:8080/",
@@ -25,11 +26,22 @@ export default {
   name: "App",
   data: () => ({
     stocksJSON: "",
+    isModalOpen: false,
   }),
+  computed: {
+    ...mapGetters(['competitors', 'modalOpenState'])
+  },
+  methods: {
+    onModalOpen(data) {
+      alert('open')
+      alert(data)
+      this.isModalOpen = true
+    }
+  },
   components: {
     Header,
     Stocks,
-    /* Modal */
+    Modal
   },
   store: store,
   mounted() {

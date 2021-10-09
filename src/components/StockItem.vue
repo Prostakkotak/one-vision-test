@@ -1,5 +1,5 @@
 <template>
-  <li class="stocks__item">
+  <li class="stocks__item" @click="$store.commit('setCompetitors', stockData.competitors); $store.commit('setModalOpenState', true)">
     <div class="stocks__markup">
       <div class="stocks__value"></div>
       <div class="stocks__value">
