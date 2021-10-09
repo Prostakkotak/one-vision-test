@@ -14,7 +14,6 @@ const store = new Vuex.Store({
     },
     mutations: {
         setStocks(state, data) {
-            /* let json = JSON.parse(data.data) */
             state.stocks = data
         },
     },

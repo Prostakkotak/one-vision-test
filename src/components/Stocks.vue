@@ -30,6 +30,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import StockItem from "./StockItem.vue";
 
 export default {
@@ -40,9 +41,7 @@ export default {
     StockItem,
   },
   computed: {
-    stocks() {
-      return (this.$store.getters.stocks);
-    },
+    ...mapGetters(['stocks'])
   },
 };
 </script>
@@ -100,17 +99,17 @@ export default {
     font-size: 14px;
     font-weight: 500;
 
-    &_zip {
+    &_region {
+      font-size: .85rem;
       color: rgba(#fff, 0.4);
     }
 
     &_positive {
       color: #3cbf73;
 
-      &::before {
+      &::after {
         content: "▲";
         font-size: 10px;
-        margin-right: 8px;
       }
     }
 
@@ -120,8 +119,11 @@ export default {
       &::after {
         content: "▼";
         font-size: 10px;
-        margin-left: 8px;
       }
+    }
+
+    &_neutral {
+      opacity: .6;
     }
   }
 
