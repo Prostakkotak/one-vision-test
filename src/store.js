@@ -6,29 +6,36 @@ Vue.use(Vuex)
 const store = new Vuex.Store({
     state: {
         stocks: '',
-        competitors: '',
+        modalData: '',
         modalOpenState: false,
+        competitors: '',
     },
     getters: {
         stocks: (state) => {
             return state.stocks
         },
-        competitors: (state) => {
-            return state.competitors
-        },
         modalOpenState: (state) => {
             return state.modalOpenState
+        },
+        modalData: (state) => {
+            return state.modalData
+        },
+        competitors: (state) => {
+            return state.competitors
         }
     },
     mutations: {
         setStocks(state, data) {
             state.stocks = data
         },
-        setCompetitors(state, list) {
-            state.competitors = list
-        },
         setModalOpenState(state, bool) {
             state.modalOpenState = bool
+        },
+        setModalData(state, obj) {
+            state.modalData = obj
+        },
+        setCompetitors(state, list) {
+            state.competitors = list
         }
     },
     actions: {}

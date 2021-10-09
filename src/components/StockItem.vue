@@ -1,5 +1,17 @@
 <template>
-  <li class="stocks__item" @click="$store.commit('setCompetitors', stockData.competitors); $store.commit('setModalOpenState', true)">
+  <li
+    class="stocks__item"
+    @click="
+      $store.commit('setCompetitors', stockData.competitors);
+      $store.commit('setModalOpenState', true);
+      $store.commit('setModalData', {
+        'zipcode': stockData.zipcode,
+        'region': stockData.region,
+        'total': stockData.total,
+        'sales': stockData.sales
+      });
+    "
+  >
     <div class="stocks__markup">
       <div class="stocks__value"></div>
       <div class="stocks__value">

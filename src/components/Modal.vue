@@ -2,23 +2,35 @@
   <transition name="fade">
     <div class="modal">
       <header class="modal__header">
-        <h2 class="modal__zip">20960</h2>
-        <p class="modal__region">Laurelm Prince George's County, MD</p>
+        <h2 class="modal__zip">{{modalData.zipcode}}</h2>
+        <p class="modal__region">{{modalData.region}}</p>
       </header>
       <main class="modal__main">
-        <p class="modal__total-sales">Total: 426</p>
+        <p class="modal__total-sales">Total: {{modalData.total}}</p>
         <ol class="modal__list">
-            
-          <li v-for="(competitor, index) in competitors" :key="index" class="modal__item">
-            <span class="modal__circle-decorator">&#9677;</span>{{competitor.name}}: {{competitor.sales}}
+          <li
+            v-for="(competitor, index) in orderedCompetitors"
+            :key="index"
+            class="modal__item"
+          >
+            <span
+              class="modal__circle-decorator"
+              :style="{
+                'background-color': indexColor(index, competitor.name),
+              }"
+            ></span>
+            <span :style="{ color: clientColorSet(competitor.name) }"
+              >{{ competitor.name }}:
+            </span>
+            {{ competitor.sales }}
           </li>
         </ol>
       </main>
       <footer class="modal__footer">
-        <p class="modal__other-sales">Other: 259</p>
+        <p class="modal__other-sales">Other: {{otherSales}}</p>
         <a href="#" class="modal__link-button">Dealer</a>
       </footer>
-      <button class="modal__close-button" @click="$store.commit('setModalOpenState', false)">
+      <button class="modal__close-button" @click="onClose">
         <svg
           width="14"
           height="14"
@@ -35,12 +47,65 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import _ from "lodash";
+import { mapGetters } from "vuex";
+
 export default {
-    computed: {
-        ...mapGetters(['competitors'])
+  data: () => ({
+    colors: [
+      "#3CBF73",
+      "#0099FF",
+      "#786BFF",
+      "#C76BFF",
+      "#FE2B5C",
+      "#50C0FF",
+      "#FFDD2D",
+      "#275BE2",
+      "#6B9DFF",
+    ],
+  }),
+  computed: {
+    ...mapGetters(["modalData"]),
+    orderedCompetitors() {
+      /* Клонируем массив и добавляем продажи нашего клиента */
+      let competitorsClone = [...this.$store.getters.competitors];
+      competitorsClone.push({
+        name: "Your dealership",
+        sales: this.$store.getters.modalData.sales,
+      });
+
+      return _.orderBy(competitorsClone, "sales").reverse();
+    },
+    otherSales() {
+        let otherSales = 0
+        
+        for (let i = 0; i < this.$store.getters.competitors.length; i++) {
+            otherSales += this.$store.getters.competitors[i].sales
+        }
+
+        otherSales += this.$store.getters.modalData.sales
+
+        return this.$store.getters.modalData.total - otherSales
     }
-}
+  },
+  methods: {
+    onClose() {
+      this.$store.commit("setModalOpenState", false);
+    },
+    indexColor(index, name) {
+      if (name != "Your dealership") {
+        return this.colors[index];
+      } else {
+        return "#F38C2C";
+      }
+    },
+    clientColorSet(name) {
+      if (name === "Your dealership") {
+        return "#F38C2C";
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss">
@@ -73,15 +138,15 @@ export default {
     transition: 200ms;
 
     &:hover {
-        background-color: rgba(#fff, .2);
+      background-color: rgba(#fff, 0.2);
     }
 
     &:active {
-        transform: scale(0.9);
+      transform: scale(0.9);
     }
 
-    >svg {
-        display: block;
+    > svg {
+      display: block;
     }
   }
 
@@ -118,11 +183,23 @@ export default {
 
   &__item {
     margin: 20px 0;
+
+    &.orange {
+      color: #f38c2c;
+    }
   }
 
   &__circle-decorator {
     display: inline-block;
     margin: 0 7px;
+    width: 13px;
+    height: 13px;
+
+    border-radius: 100%;
+
+    &.orange {
+      color: #f38c2c;
+    }
   }
 
   &__other-sales {

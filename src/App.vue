@@ -5,7 +5,6 @@
       <Stocks :stocksList="stocksJSON" />
       <Modal
        v-show="$store.getters.modalOpenState"
-       :competitors="competitors"
       />
     </main>
   </div>
@@ -29,7 +28,7 @@ export default {
     isModalOpen: false,
   }),
   computed: {
-    ...mapGetters(['competitors', 'modalOpenState'])
+    ...mapGetters(['modalOpenState', 'modalData'])
   },
   methods: {
     onModalOpen(data) {
