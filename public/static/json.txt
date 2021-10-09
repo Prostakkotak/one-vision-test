@@ -9,7 +9,7 @@
     "competitors": [
       {
         "name": "Brown's Chantilly Mazda",
-        "sales": 17,
+        "sales": 17
       },
       {
         "name": "Brown's Alexandria Mazda",
