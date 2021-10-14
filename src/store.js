@@ -190,7 +190,6 @@ const store = new Vuex.Store({
     },
     actions: {
         openModal(context, obj) {
-            // Открываем модалку
             context.commit('setModalOpenState', obj.modalOpenState)
             context.commit('setModalData', obj.modalData)
             context.commit('setMapMode', obj.mapMode)

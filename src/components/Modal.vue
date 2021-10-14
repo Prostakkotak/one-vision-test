@@ -1,6 +1,7 @@
 <template>
   <transition name="fade">
     <div
+    id="modal"
       :class="{ modal: true, modal_mapmode: $store.getters.mapMode }"
       :style="getModalPos()"
       @click="checkMapMode()"
@@ -55,6 +56,10 @@ import _ from "lodash";
 
 export default {
   props: ["modalData"],
+  data: () => ({
+    modalWidth: 0,
+    modalHeight: 0
+  }),
   computed: {
     orderedCompetitors() {
       /* Клонируем массив и добавляем продажи нашего клиента */
@@ -99,13 +104,9 @@ export default {
       if (this.$store.getters.mapMode && this.$store.getters.modalOpenState) {
         let obj = this.$store.getters.mousePos
 
-        let modalWidth = document.getElementsByClassName('modal')[0].offsetWidth;
-        let modalHeight = document.getElementsByClassName('modal')[0].offsetHeight;
-        
-
         return {
-          left: obj.x + (modalWidth/2 + 35) + "px",
-          top: obj.y + (modalHeight/2 - 35) + "px"
+          left: obj.x + "px",
+          top: obj.y + "px"
         }
       }
     },
@@ -133,6 +134,10 @@ export default {
   border-radius: 12px;
   background-color: rgba(#3f4042, 1);
   box-shadow: 0px 24px 96px 0px rgba(0, 0, 0, 0.24);
+
+  &_mapmode {
+    transform: translate(0, 0);
+  }
 
   &__close-button {
     position: absolute;

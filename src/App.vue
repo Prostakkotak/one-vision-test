@@ -3,7 +3,6 @@
     <Header />
     <main class="main">
       <Stocks :stocksList="stocksJSON" />
-
       <Map :apiKey="apiKey" />
       <Modal
        v-show="$store.getters.modalOpenState"
@@ -30,7 +29,7 @@ export default {
   data: () => ({
     stocksJSON: "",
     isModalOpen: false,
-    apiKey: 'YOUR_API',
+    apiKey: 'KEY',
   }),
   computed: {
     ...mapGetters(['modalOpenState', 'modalData'])

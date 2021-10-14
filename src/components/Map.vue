@@ -1,6 +1,5 @@
 <template>
   <div>
-    <div class="gmap__popup" id="popup-test">TESTO</div>
     <div id="map" class="gmap" v-show="isMapReady"></div>
   </div>
 </template>
@@ -30,14 +29,6 @@ export default {
         this.initMap();
       }
     );
-    document.getElementById("map").addEventListener("click", (e) => {
-      if (this.$store.getters.modalOpenState && this.$store.getters.mapMode) {
-        this.$store.commit("setMousePos", {
-          x: e.pageX,
-          y: e.pageY,
-        });
-      }
-    });
   },
   methods: {
     initMap() {
@@ -89,11 +80,21 @@ export default {
                   break;
                 }
               }
+              this.$store.commit("setMousePos", {
+                x: event.domEvent.pageX,
+                y: event.domEvent.pageY,
+              });
             } else {
               this.$store.commit("setModalOpenState", false);
               this.$store.commit("setModalData", {});
             }
           });
+
+          this.map.addListener('dragstart', () => {
+              this.$store.commit("setModalOpenState", false);
+              this.$store.commit("setModalData", {});
+          })
+
           this.map.data.addListener("mouseover", (event) => {
             this.map.data.revertStyle();
             this.map.data.overrideStyle(event.feature, { strokeWeight: 8 });
@@ -130,23 +131,7 @@ export default {
           this.boundariesList.push(obj[i]);
         }
       }
-    } /* 
-    getMousePos(event) {
-        console.log(event)
-        return {
-            "x": event["pageX"],
-            "y": event["pageY"]
-        }
-    }, */,
-    /* attachPolygonInfoWindow(polygon) {
-      var infoWindow = new window.google.maps.InfoWindow();
-      window.google.maps.event.addListener(polygon, "mouseover", function (e) {
-        infoWindow.setContent("Polygon Name");
-        var latLng = e.latLng;
-        infoWindow.setPosition(latLng);
-        infoWindow.open(this.map);
-      });
-    }, */
+    },
   },
 };
 </script>
@@ -155,9 +140,5 @@ export default {
 .gmap {
   margin: 100px 0;
   height: 800px;
-
-  &__popup {
-    position: fixed;
-  }
 }
 </style>
