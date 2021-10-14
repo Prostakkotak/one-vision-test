@@ -1,6 +1,6 @@
 [
   {
-    "zipcode": "20904",
+    "zipcode": "15219",
     "region": "Silver Spring, Montgomery County, MD",
     "sales": 19,
     "lastYear": 23,
@@ -30,7 +30,7 @@
     ]
   },
   {
-    "zipcode": "20707",
+    "zipcode": "15233",
     "region": "Laurel, Prince George's County, MD",
     "sales": 15,
     "lastYear": 17,
@@ -60,7 +60,7 @@
     ]
   },
   {
-    "zipcode": "20705",
+    "zipcode": "15212",
     "region": "Beltsville, Prince George's County, MD",
     "sales": 40,
     "lastYear": 28,
@@ -90,7 +90,7 @@
     ]
   },
   {
-    "zipcode": "20866",
+    "zipcode": "15260",
     "region": "Burtonsville, Montgomery County, MD",
     "sales": 14,
     "lastYear": 14,
@@ -112,7 +112,7 @@
     ]
   },
   {
-    "zipcode": "20905",
+    "zipcode": "15203",
     "region": "Silver Spring, Montgomery County, MD",
     "sales": 5,
     "lastYear": 17,
@@ -142,7 +142,7 @@
     ]
   },
   {
-    "zipcode": "20903",
+    "zipcode": "15210",
     "region": "Silver Spring, Montgomery County, MD",
     "sales": 10,
     "lastYear": 15,
@@ -172,7 +172,7 @@
     ]
   },
   {
-    "zipcode": "20902",
+    "zipcode": "15222",
     "region": "Silver Spring, Montgomery County, MD",
     "sales": 57,
     "lastYear": 25,

@@ -1,12 +1,16 @@
 <template>
   <transition name="fade">
-    <div class="modal">
+    <div
+      :class="{ modal: true, modal_mapmode: $store.getters.mapMode }"
+      :style="getModalPos()"
+      @click="checkMapMode()"
+    >
       <header class="modal__header">
-        <h2 class="modal__zip">{{modalData.zipcode}}</h2>
-        <p class="modal__region">{{modalData.region}}</p>
+        <h2 class="modal__zip">{{ modalData.zipcode }}</h2>
+        <p class="modal__region">{{ modalData.region }}</p>
       </header>
       <main class="modal__main">
-        <p class="modal__total-sales">Total: {{modalData.total}}</p>
+        <p class="modal__total-sales">Total: {{ modalData.total }}</p>
         <ol class="modal__list">
           <li
             v-for="(competitor, index) in orderedCompetitors"
@@ -27,7 +31,7 @@
         </ol>
       </main>
       <footer class="modal__footer">
-        <p class="modal__other-sales">Other: {{otherSales}}</p>
+        <p class="modal__other-sales">Other: {{ otherSales }}</p>
         <a href="#" class="modal__link-button">Dealer</a>
       </footer>
       <button class="modal__close-button" @click="onClose">
@@ -48,53 +52,40 @@
 
 <script>
 import _ from "lodash";
-import { mapGetters } from "vuex";
 
 export default {
-  data: () => ({
-    colors: [
-      "#3CBF73",
-      "#0099FF",
-      "#786BFF",
-      "#C76BFF",
-      "#FE2B5C",
-      "#50C0FF",
-      "#FFDD2D",
-      "#275BE2",
-      "#6B9DFF",
-    ],
-  }),
+  props: ["modalData"],
   computed: {
-    ...mapGetters(["modalData"]),
     orderedCompetitors() {
       /* Клонируем массив и добавляем продажи нашего клиента */
-      let competitorsClone = [...this.$store.getters.competitors];
+      let competitorsClone = [...this.modalData.competitors];
       competitorsClone.push({
         name: "Your dealership",
-        sales: this.$store.getters.modalData.sales,
+        sales: this.modalData.sales,
       });
 
       return _.orderBy(competitorsClone, "sales").reverse();
     },
     otherSales() {
-        let otherSales = 0
-        
-        for (let i = 0; i < this.$store.getters.competitors.length; i++) {
-            otherSales += this.$store.getters.competitors[i].sales
-        }
+      let otherSales = 0;
 
-        otherSales += this.$store.getters.modalData.sales
+      for (let i = 0; i < this.modalData.competitors.length; i++) {
+        otherSales += this.modalData.competitors[i].sales;
+      }
 
-        return this.$store.getters.modalData.total - otherSales
-    }
+      otherSales += this.modalData.sales;
+
+      return this.modalData.total - otherSales;
+    },
   },
   methods: {
     onClose() {
       this.$store.commit("setModalOpenState", false);
+      this.$store.commit("setModalData", {});
     },
     indexColor(index, name) {
       if (name != "Your dealership") {
-        return this.colors[index];
+        return this.$store.getters.colors[index];
       } else {
         return "#F38C2C";
       }
@@ -104,6 +95,25 @@ export default {
         return "#F38C2C";
       }
     },
+    getModalPos() {
+      if (this.$store.getters.mapMode && this.$store.getters.modalOpenState) {
+        let obj = this.$store.getters.mousePos
+
+        let modalWidth = document.getElementsByClassName('modal')[0].offsetWidth;
+        let modalHeight = document.getElementsByClassName('modal')[0].offsetHeight;
+        
+
+        return {
+          left: obj.x + (modalWidth/2 + 35) + "px",
+          top: obj.y + (modalHeight/2 - 35) + "px"
+        }
+      }
+    },
+    checkMapMode() {
+      if (this.$store.getters.mapMode) {
+        this.onClose()
+      }
+    }
   },
 };
 </script>

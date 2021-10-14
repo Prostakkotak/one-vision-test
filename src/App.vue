@@ -3,8 +3,11 @@
     <Header />
     <main class="main">
       <Stocks :stocksList="stocksJSON" />
+
+      <Map :apiKey="apiKey" />
       <Modal
        v-show="$store.getters.modalOpenState"
+       :modalData="$store.getters.modalData"
       />
     </main>
   </div>
@@ -14,6 +17,7 @@
 import Header from "./components/Header.vue";
 import Stocks from "./components/Stocks.vue";
 import Modal from './components/Modal.vue';
+import Map from './components/Map.vue';
 import store from "./store";
 import axios from "axios";
 import { mapGetters } from 'vuex';
@@ -26,6 +30,7 @@ export default {
   data: () => ({
     stocksJSON: "",
     isModalOpen: false,
+    apiKey: 'YOUR_API',
   }),
   computed: {
     ...mapGetters(['modalOpenState', 'modalData'])
@@ -40,7 +45,8 @@ export default {
   components: {
     Header,
     Stocks,
-    Modal
+    Modal,
+    Map
   },
   store: store,
   mounted() {

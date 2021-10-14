@@ -2,14 +2,11 @@
   <li
     class="stocks__item"
     @click="
-      $store.commit('setCompetitors', stockData.competitors);
-      $store.commit('setModalOpenState', true);
-      $store.commit('setModalData', {
-        'zipcode': stockData.zipcode,
-        'region': stockData.region,
-        'total': stockData.total,
-        'sales': stockData.sales
-      });
+      $store.dispatch('openModal', {
+        modalData: stockData,
+        modalOpenState: true,
+        mapMode: false,
+      })
     "
   >
     <div class="stocks__markup">
